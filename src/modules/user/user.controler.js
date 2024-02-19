@@ -42,11 +42,18 @@ const signIn = catchError(async (req,res) => {
     res.json({message:'email or password is not true'})
 })
 
+// get all users
+const getAllUsers = async(req,res) => {
+    const users = await userModel.find({})
+    res.json({message:'success',users})
+}
+
 
 
 
 export {
     signUp,
     verify,
-    signIn
+    signIn,
+    getAllUsers
 }
