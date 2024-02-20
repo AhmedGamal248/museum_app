@@ -1,8 +1,9 @@
 import express from 'express'
-import { getAllUsers, signIn, signUp, verify } from './user.controler.js';
+import { deleteAccount, getAllUsers, signIn, signUp, updateAccount, verify } from './user.controler.js';
 import { checkEmailExist } from '../../middelwar/checkEmailEx.js';
 import { addUserVal } from './user.validation.js';
 import { validation } from '../../middelwar/validation.js';
+import { allawedTo } from '../../middelwar/auth.js';
 
 const userRouter = express.Router();
 
@@ -16,7 +17,13 @@ userRouter.get('/verify/:token',verify)
 userRouter.post('/signIn',signIn)
 
 // git all users
-userRouter.get('/users',getAllUsers)
+userRouter.get('/users',allawedTo('admin'),getAllUsers)
+
+// update account
+userRouter.put('/user/:id',updateAccount)
+
+// delete account
+userRouter.delete('/user/:id',deleteAccount)
 
 export {
     userRouter
