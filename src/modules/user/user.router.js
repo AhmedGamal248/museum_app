@@ -17,7 +17,7 @@ userRouter.get('/verify/:token',verify)
 userRouter.post('/signIn',signIn)
 
 // git all users
-userRouter.get('/users',allawedTo('admin'),getAllUsers)
+userRouter.get('/users',getAllUsers)
 
 // update account
 userRouter.put('/user/:id',updateAccount)
