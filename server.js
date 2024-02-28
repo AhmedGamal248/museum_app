@@ -7,13 +7,19 @@ import { DBconnection } from './databases/DB_connection.js'
 import { userRouter } from './src/modules/user/user.router.js'
 import { appError } from './src/utils/appError.js'
 import cors from 'cors'
+import { artifactRouter } from './src/modules/artifact/artifact.router.js'
+
 const app = express()
 const port = 3000
 
 
 app.use(cors())
 app.use(express.json())
+app.use(express.static('uploads'))
 app.use(userRouter)
+app.use(artifactRouter)
+
+app.get('/',(req,res)=>{res.json({message:'success'})})
 
 DBconnection()
 
