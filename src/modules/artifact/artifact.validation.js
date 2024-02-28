@@ -5,7 +5,7 @@ const addArtifactVal = joi.object({
     description: joi.string().min(2).max(500).trim().required(),
     createdBy: joi.string().hex().length(24),
 
-    logo: joi.object({
+    imgCover: joi.object({
         fieldname:joi.string().required(),
         originalname:joi.string().required(),
         encoding:joi.string().required(),
