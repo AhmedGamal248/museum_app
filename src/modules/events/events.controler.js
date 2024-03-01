@@ -2,6 +2,7 @@ import 'dotenv/config'
 import {v2 as cloudinary} from 'cloudinary';
 import { catchError } from '../../middelwar/catchError.js';
 import { eventsModel } from '../../../databases/models/eventsModel.js';
+import { ApiFeatures } from '../../utils/apiFeatures.js';
           
 cloudinary.config({ 
   cloud_name: 'dzpwwxuld', 
@@ -23,8 +24,11 @@ const addEventt = catchError (async(req,res)=>{
 
 // get all events
 const getAllEvents = catchError( async(req,res) => {
-  const events = await eventsModel.find({})
-  res.json({message:'success',events})
+  let apiFeatures = new ApiFeatures(eventsModel.find(),req.query)
+  .pagination().search()
+
+   let events = await apiFeatures.mongooseQuery;
+   res.json({ massage: "success",page:apiFeatures.pageNum,next_page:apiFeatures.nexP, events });
 })
 
 // get single event data

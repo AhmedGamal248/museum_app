@@ -2,6 +2,7 @@ import 'dotenv/config'
 import {v2 as cloudinary} from 'cloudinary';
 import { catchError } from '../../middelwar/catchError.js';
 import { workShopModel } from '../../../databases/models/workShopsModel.js';
+import { ApiFeatures } from '../../utils/apiFeatures.js';
           
 cloudinary.config({ 
   cloud_name: 'dzpwwxuld', 
@@ -23,8 +24,11 @@ const addWorkShop = catchError (async(req,res)=>{
 
 // get all workShops
 const getAllWorkShops = catchError( async(req,res) => {
-  const workShops = await workShopModel.find({})
-  res.json({message:'success',workShops})
+  let apiFeatures = new ApiFeatures(workShopModel.find(),req.query)
+  .pagination().search()
+
+   let workShops = await apiFeatures.mongooseQuery;
+   res.json({ massage: "success",page:apiFeatures.pageNum,next_page:apiFeatures.nexP, workShops });
 })
 
 // get single workShop data

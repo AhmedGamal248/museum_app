@@ -4,6 +4,7 @@ import { userModel } from '../../../databases/models/userModel.js';
 import { catchError } from '../../middelwar/catchError.js';
 import { sendEmails } from '../../emails/sendEmails.js';
 import { appError } from '../../utils/appError.js';
+import { ApiFeatures } from '../../utils/apiFeatures.js';
 
 
 //sign up
@@ -41,8 +42,13 @@ const signIn = catchError(async (req,res) => {
 
 // get all users
 const getAllUsers = catchError(async(req,res) => {
-    const users = await userModel.find({})
-    res.json({message:'success',users})
+
+    let apiFeatures = new ApiFeatures(userModel.find(),req.query)
+    .pagination()
+ 
+     let users = await apiFeatures.mongooseQuery;
+     res.json({ massage: "successs",page:apiFeatures.pageNum,next_page:apiFeatures.nexP, users });
+
 })
 
 // get singel user data

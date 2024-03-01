@@ -2,6 +2,7 @@ import 'dotenv/config'
 import {v2 as cloudinary} from 'cloudinary';
 import { catchError } from '../../middelwar/catchError.js';
 import { collectiontModel } from '../../../databases/models/collectionModel.js';
+import { ApiFeatures } from '../../utils/apiFeatures.js';
           
 cloudinary.config({ 
   cloud_name: 'dzpwwxuld', 
@@ -23,8 +24,11 @@ const addCollection = catchError (async(req,res)=>{
 
 // get all collections
 const getAllCollections = catchError( async(req,res) => {
-  const collections = await collectiontModel.find({})
-  res.json({message:'success',collections})
+  let apiFeatures = new ApiFeatures(collectiontModel.find(),req.query)
+  .pagination().search()
+
+   let collections = await apiFeatures.mongooseQuery;
+   res.json({ massage: "success",page:apiFeatures.pageNum,next_page:apiFeatures.nexP, collections });
 })
 
 // get single collection

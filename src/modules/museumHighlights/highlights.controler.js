@@ -2,6 +2,7 @@ import {highlightModel } from '../../../databases/models/highlightModel.js'
 import 'dotenv/config'
 import {v2 as cloudinary} from 'cloudinary';
 import { catchError } from '../../middelwar/catchError.js';
+import { ApiFeatures } from '../../utils/apiFeatures.js';
           
 cloudinary.config({ 
   cloud_name: 'dzpwwxuld', 
@@ -23,8 +24,12 @@ const addHighlight = catchError (async(req,res)=>{
 
 // get all Highlights
 const getAllHighlights = catchError( async(req,res) => {
-  const highlights = await highlightModel.find({})
-  res.json({message:'success',highlights})
+  let apiFeatures = new ApiFeatures(highlightModel.find(),req.query)
+  .pagination().search()
+
+   let highlights = await apiFeatures.mongooseQuery;
+   res.json({ massage: "success",page:apiFeatures.pageNum,next_page:apiFeatures.nexP, highlights });
+
 })
 
 // get single Highlights
