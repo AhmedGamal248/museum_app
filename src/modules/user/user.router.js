@@ -1,7 +1,7 @@
 import express from 'express'
-import { deleteAccount, getAllUsers, signIn, signUp, updateAccount, verify } from './user.controler.js';
+import { deleteAccount, getAllUsers, getSingleUser, signIn, signUp, updateAccount, verify } from './user.controler.js';
 import { checkEmailExist } from '../../middelwar/checkEmailEx.js';
-import { addUserVal } from './user.validation.js';
+import { addUserVal, paramsIdVal } from './user.validation.js';
 import { validation } from '../../middelwar/validation.js';
 import { allawedTo } from '../../middelwar/auth.js';
 
@@ -18,6 +18,9 @@ userRouter.post('/signIn',signIn)
 
 // git all users
 userRouter.get('/users',getAllUsers)
+
+// get singel user data
+userRouter.get('/users/:id',validation(paramsIdVal),getSingleUser)
 
 // update account
 userRouter.put('/user/:id',updateAccount)

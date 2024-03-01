@@ -3,17 +3,17 @@ import mongoose from "mongoose";
 const schema = new mongoose.Schema({
     title:{
         type:String,
-        unique:[true,'the product artifact used'],
+        unique:[true,'the product highlight name used'],
         trim:true,
         require:true,
-        minLength:[2,'too short artifact name']
+        minLength:[2,'too short highlight name']
     },
     description:{
         type:String,
         trim:true,
         require:true,
-        minLength:[10,'too short artifact description'],
-        maxLength:[500,'too long artifact description']
+        minLength:[10,'too short highlight description'],
+        maxLength:[500,'too long highlight description']
     },
     imgCover:String,
     createdBy:{
@@ -26,4 +26,4 @@ const schema = new mongoose.Schema({
 //     el.imgCover = process.env.BASE_URL + el.imgCover
 // })
 
-export const artifactModel = mongoose.model('artifact',schema)
+export const highlightModel = mongoose.model('highlight',schema)

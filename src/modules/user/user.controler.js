@@ -45,6 +45,12 @@ const getAllUsers = catchError(async(req,res) => {
     res.json({message:'success',users})
 })
 
+// get singel user data
+const getSingleUser = catchError(async(req,res) => {
+    const user = await userModel.findById(req.params.id)
+    res.json({message:'success',user})
+})
+
 
 // update user
 const updateAccount = catchError( async (req,res,next) => {
@@ -103,6 +109,7 @@ export {
     verify,
     signIn,
     getAllUsers,
+    getSingleUser,
     updateAccount,
     deleteAccount
 }

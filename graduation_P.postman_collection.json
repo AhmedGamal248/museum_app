@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"userName\":\"             Ahmed Gamal         \",\r\n    \"email\":\"ag2849315@gmail.com\",\r\n    \"password\":\"Ag123456789\",\r\n    \"rePassword\":\"Ag123456789\"\r\n}",
+							"raw": "{\r\n    \"userName\":\"             Ahmed Gamal         \",\r\n    \"email\":\"ag2@gmail.com\",\r\n    \"password\":\"Ag123456789\",\r\n    \"rePassword\":\"Ag123456789\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -44,7 +44,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"ag28d49315@gmail.com\",\r\n    \"password\":\"Ag123456789\"\r\n}",
+							"raw": "{\r\n    \"email\":\"ag@gmail.com\",\r\n    \"password\":\"Ag123456789\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -60,6 +60,651 @@
 							"port": "3000",
 							"path": [
 								"signIn"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWQzODRhN2M0YzEzYTBhNWQzNGRiM2UiLCJlbWFpbCI6IjI4NDkzNjU2MTVAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDgzNjA4NzF9.qJ7EMpdBc56v1QpyVk8M3m4rVuBje2zNrEigvN4HaV4",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyUm9sZSI6InVzZXIiLCJ1c2VySWQiOiI2NWRkNzY3OWJkOGY2Njg4ZmE4NDgwMDQiLCJlbWFpbCI6ImFnNjgyOGRsa2ZtZGsxQGdtYWlsLmNvbSIsImlhdCI6MTcwOTAxMjYxOH0.DIhAm-85NnMZ7Y20dZYXQ8NLrSwSGiYpm-m2E_8B8Fk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\":\"medo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/65dd7679bd8f6688fa848004",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"65dd7679bd8f6688fa848004"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete account",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyUm9sZSI6InVzZXIiLCJ1c2VySWQiOiI2NWRkNzY3OWJkOGY2Njg4ZmE4NDgwMDQiLCJlbWFpbCI6ImFnNjgyOGRsa2ZtZGsxQGdtYWlsLmNvbSIsImlhdCI6MTcwOTAxMjYxOH0.DIhAm-85NnMZ7Y20dZYXQ8NLrSwSGiYpm-m2E_8B8Fk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/user/65dd7679bd8f6688fa848004",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"65dd7679bd8f6688fa848004"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users/65de76586af621149c0661d8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"65de76586af621149c0661d8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "highlights",
+			"item": [
+				{
+					"name": "add highlight",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imgCover",
+									"type": "file",
+									"src": "/D:/photo/22498925_1920155358307263_5829163160058077465_o.jpg"
+								},
+								{
+									"key": "title",
+									"value": "highlights 1",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "ay kalam ya highlights 1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/highlights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"highlights"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all highlights",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/highlights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"highlights"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update highlights",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"ddddddddddddddddddd\",\r\n    \"description\":\"hhhhhhhhhhhhhhhhhhhhhh\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/highlights/65e11e72df13347fd73a66da",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"highlights",
+								"65e11e72df13347fd73a66da"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete highlights",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/highlights/65e11d7ddf13347fd73a66d3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"highlights",
+								"65e11d7ddf13347fd73a66d3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single highlight",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/highlights/65e11e72df13347fd73a66da",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"highlights",
+								"65e11e72df13347fd73a66da"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "collection",
+			"item": [
+				{
+					"name": "add collection",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imgCover",
+									"type": "file",
+									"src": "/D:/photo/pexels-photo-1109354.jpeg"
+								},
+								{
+									"key": "title",
+									"value": "collection 2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "ay kalam ya collection 2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/collections",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"collections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all collections",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/collections",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"collections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update collection",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"ddddddddddddddddddd\",\r\n    \"description\":\"fffffffffffffff\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/collections/65e120b28bc73059089904d0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"collections",
+								"65e120b28bc73059089904d0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete collection",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/collections/65e120b28bc73059089904d0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"collections",
+								"65e120b28bc73059089904d0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single collection",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/collections/65e12bb3e9429517adf197b0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"collections",
+								"65e12bb3e9429517adf197b0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "events",
+			"item": [
+				{
+					"name": "add event",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imgCover",
+									"type": "file",
+									"src": "/D:/photo/24879837_1950013945321404_5634109489394639314_o.jpg"
+								},
+								{
+									"key": "title",
+									"value": "event 3",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "ay kalam ya event 3",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "20/10",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update event",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"ddddddddddddddddddds\",\r\n    \"description\":\"fffffffffffffff\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/events/65e12c32e9429517adf197b4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"events",
+								"65e12c32e9429517adf197b4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete events",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/events/65e12c32e9429517adf197b4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"events",
+								"65e12c32e9429517adf197b4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single event",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/events/65e12c32e9429517adf197b4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"events",
+								"65e12c32e9429517adf197b4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "work Shops",
+			"item": [
+				{
+					"name": "add work shop",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imgCover",
+									"type": "file",
+									"src": "/D:/photo/4K-OLED-HD-Wallpaper-768x432.png"
+								},
+								{
+									"key": "title",
+									"value": "workShops 2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "ay kalam ya workShops 2",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "2/2/2026",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/workShops",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"workShops"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all work shop",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/workShops",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"workShops"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update work shop",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"ddddddddddddddddddd\",\r\n    \"description\":\"fffffffffffffff\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/workShops/65e13533d818846d12df07f4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"workShops",
+								"65e13533d818846d12df07f4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete work shop",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/workShops/65e13533d818846d12df07f4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"workShops",
+								"65e13533d818846d12df07f4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single event",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/workShops/65e13533d818846d12df07f4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"workShops",
+								"65e13533d818846d12df07f4"
 							]
 						}
 					},

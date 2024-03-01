@@ -7,7 +7,10 @@ import { DBconnection } from './databases/DB_connection.js'
 import { userRouter } from './src/modules/user/user.router.js'
 import { appError } from './src/utils/appError.js'
 import cors from 'cors'
-import { artifactRouter } from './src/modules/artifact/artifact.router.js'
+import { highlightRouter } from './src/modules/museumHighlights/highlights.router.js'
+import { collectionRouter } from './src/modules/museumCollections/collection.router.js'
+import { eventRouter } from './src/modules/events/events.router.js'
+import { workShopRouter } from './src/modules/workShops/workShops.router.js'
 
 const app = express()
 const port = 3000
@@ -17,9 +20,12 @@ app.use(cors())
 app.use(express.json())
 app.use(express.static('uploads'))
 app.use(userRouter)
-app.use(artifactRouter)
+app.use(highlightRouter)
+app.use(collectionRouter)
+app.use(eventRouter)
+app.use(workShopRouter)
 
-app.get('/',(req,res)=>{res.json({message:'success'})})
+app.get('/',(req,res)=>{res.json({message:'hello hello'})})
 
 DBconnection()
 
