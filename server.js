@@ -19,6 +19,7 @@ const port = 3000
 app.use(cors())
 app.use(express.json())
 app.use(express.static('uploads'))
+app.use(express.urlencoded({extended:true}))
 app.use(userRouter)
 app.use(highlightRouter)
 app.use(collectionRouter)
