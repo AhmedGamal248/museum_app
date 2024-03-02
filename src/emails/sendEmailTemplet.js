@@ -47,7 +47,7 @@ export const emailTemplet =  (token)=> {
         <h1>Welcome to our Email verifycation</h1>
         <p>we are very happy to join us </p>
         <p>To get started, please click the button below:</p>
-        <p><a href="http://localhost:3000/verify/${token}" class="button">Verify Your Acount</a></p>
+        <p><a href="https://museum-1.onrender.com/verify/${token}" class="button">Verify Your Acount</a></p>
         <p>If you have any questions or need further assistance, feel free to contact us.</p>
         <p>Best regards,</p>
         <p>The blabal Team</p>
