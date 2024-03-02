@@ -28,6 +28,12 @@ userRouter.put('/user/:id',updateAccount)
 // delete account
 userRouter.delete('/user/:id',deleteAccount)
 
+// //forget password
+// userRouter.post('/forgetPassword',frogetPassword)
+
+// //resetPassword
+// userRouter.post('/resetPassword/:token',resetPassword)
+
 export {
     userRouter
 }
