@@ -11,7 +11,7 @@ export const sendEmails = async (email)=> {
             },
           });
         
-        let token = jwt.sign({email},process.env.JWT_KEY)
+        let token = jwt.sign({email},'process.env.JWT_KEY')
             // send mail with defined transport object
             const info = await transporter.sendMail({
               from: '"blabla"', // sender address
