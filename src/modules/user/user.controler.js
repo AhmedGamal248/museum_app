@@ -30,16 +30,16 @@ const verify = catchError(async(req,res,next)=> {
 
 
 //sign in
-const signIn = catchError(async (req,res) => {
-    const fUser = await userModel.findOne({email:req.body.email})
-    if (fUser && bcrypt.compareSync(req.body.password,fUser.password)){
-        fUser.status = 'online'
-        await fUser.save()
-        let token = jwt.sign({userRole:fUser.role,userId:fUser._id,email:fUser.email},'process.env.JWT_KEY')
-        return res.json({message:'success',token})
+const signIn = async (req,res) => {
+    const found = await userModel.findOne({email:req.body.email});
+    if (found &&  bcrypt.compareSync(req.body.password,found.password)) {
+            let token = jwt.sign({Id:found._id,email:found.email,role:found.role},'process.env.JWT_KEY')            
+            res.json({message:"success",token})
+    
+    } else {
+        res.json({message:'email or password is not true'})
     }
-    res.json({message:'email or password is not true'})
-})
+}
 
 // get all users
 const getAllUsers = catchError(async(req,res) => {
