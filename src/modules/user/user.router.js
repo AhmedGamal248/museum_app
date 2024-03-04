@@ -23,10 +23,10 @@ userRouter.get('/users',getAllUsers)
 userRouter.get('/users/:id',validation(paramsIdVal),getSingleUser)
 
 // update account
-userRouter.put('/user/:id',updateAccount)
+userRouter.put('/users/:id',updateAccount)
 
 // delete account
-userRouter.delete('/user/:id',deleteAccount)
+userRouter.delete('/users/:id',deleteAccount)
 
 // //forget password
 // userRouter.post('/forgetPassword',frogetPassword)

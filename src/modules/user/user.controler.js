@@ -33,6 +33,7 @@ const verify = catchError(async(req,res,next)=> {
 const signIn = async (req,res) => {
     const found = await userModel.findOne({email:req.body.email});
     if (found &&  bcrypt.compareSync(req.body.password,found.password)) {
+        await userModel.findOneAndUpdate({email:req.body.email},{status:'online'})
             let token = jwt.sign({Id:found._id,email:found.email,role:found.role},'process.env.JWT_KEY')            
             res.json({message:"success",token})
     
@@ -61,13 +62,13 @@ const getSingleUser = catchError(async(req,res) => {
 
 // update user
 const updateAccount = catchError( async (req,res,next) => {
-    console.log(req.headers.token)
-        const user = await userModel.findById({_id:req.params.id})
+        const user = await userModel.findById(req.params.id)
         if (user) {
             jwt.verify(req.headers.token,'process.env.JWT_KEY',async(err,decoded)=>{
                 if (err) return next(new appError(err,401))
                 let tst = jwt.decode(req.headers.token)
                 if(tst.email == user.email) {
+                    console.log(tst.email)
                     if ( user.status == 'online') {
                         user.set(req.body)
                         await user.save()
@@ -87,7 +88,7 @@ const updateAccount = catchError( async (req,res,next) => {
 
 // delete user
 const deleteAccount = catchError( async (req,res,next) => {
-        const user = await userModel.findById({_id:req.params.id})
+        const user = await userModel.findById(req.params.id)
         if (user) {
             jwt.verify(req.headers.token,'process.env.JWT_KEY',async(err,decoded)=>{
                 if (err) return next(new appError(err,401))
