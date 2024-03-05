@@ -1,9 +1,8 @@
 import express from 'express'
-import { deleteAccount, getAllUsers, getSingleUser, signIn, signUp, updateAccount, verify } from './user.controler.js';
+import { allowedTo, changePassword, deleteAccount, getAllUsers, getSingleUser, protectedRoutes, signIn, signUp, updateAccount, verify } from './user.controler.js';
 import { checkEmailExist } from '../../middelwar/checkEmailEx.js';
-import { addUserVal, paramsIdVal } from './user.validation.js';
+import { addUserVal, changePasswordVal, paramsIdVal, updateUserVal } from './user.validation.js';
 import { validation } from '../../middelwar/validation.js';
-import { allawedTo } from '../../middelwar/auth.js';
 
 const userRouter = express.Router();
 
@@ -17,16 +16,19 @@ userRouter.get('/verify/:token',verify)
 userRouter.post('/signIn',signIn)
 
 // git all users
-userRouter.get('/users',getAllUsers)
+userRouter.get('/users',protectedRoutes,allowedTo('user'),getAllUsers)
 
 // get singel user data
-userRouter.get('/users/:id',validation(paramsIdVal),getSingleUser)
+userRouter.get('/users/:id',protectedRoutes,validation(paramsIdVal),getSingleUser)
 
 // update account
-userRouter.put('/users/:id',updateAccount)
+userRouter.put('/users/:id',protectedRoutes,validation(updateUserVal),updateAccount)
 
 // delete account
-userRouter.delete('/users/:id',deleteAccount)
+userRouter.delete('/users/:id',protectedRoutes,validation(paramsIdVal),deleteAccount)
+
+//change password
+userRouter.patch('/changePassword',protectedRoutes,validation(changePasswordVal),changePassword)
 
 // //forget password
 // userRouter.post('/forgetPassword',frogetPassword)

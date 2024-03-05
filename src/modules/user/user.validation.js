@@ -22,10 +22,16 @@ const updateUserVal = joi.object({
     role: joi.string().valid('user', 'Company_HR')
 })
 
-
+//change password schema validation
+const changePasswordVal = joi.object({
+    password:joi.string().pattern(/^[A-Z][a-z0-9_]{10,30}$/).required(),
+    newPassword:joi.string().pattern(/^[A-Z][a-z0-9_]{10,30}$/).required()
+}
+)  
 
 export {
     addUserVal,
     paramsIdVal,
     updateUserVal,
+    changePasswordVal
 }
