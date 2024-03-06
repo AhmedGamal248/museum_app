@@ -141,7 +141,6 @@ const deleteAccount = catchError( async (req,res,next) => {
 const changePassword = async (req,res,next)=> {
 
     const user = await userModel.findById(req.user._id)
-
     // check if password is true or not
     console.log(req.body.password,user.password)
     if (user && bcrypt.compareSync(req.body.password,user.password)){ 
@@ -167,9 +166,10 @@ const protectedRoutes = async (req,res,next)=> {
     let token = req.headers.token
     // check if token is exist
     if (!token) return next (new appError('token must be provided',401))
-
+    
     //verify token
     let decoded = jwt.verify(token,'process.env.JWT_KEY')
+    console.log(decoded.userId)
 
     //find user by id from token
     let user = await userModel.findById(decoded.userId)
