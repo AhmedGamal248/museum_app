@@ -33,7 +33,8 @@ const schema = mongoose.Schema({
         type:Boolean,
         enum:[true,false],
         default:false
-    }
+    },
+    passwordChangedAt:Date
 },{timestamps:true})
 
 
