@@ -3,6 +3,7 @@ import { allowedTo, changePassword, deleteAccount, getAllUsers, getSingleUser, p
 import { checkEmailExist } from '../../middelwar/checkEmailEx.js';
 import { addUserVal, changePasswordVal, paramsIdVal, updateUserVal } from './user.validation.js';
 import { validation } from '../../middelwar/validation.js';
+import { hashPassword } from '../../middelwar/hashPassword.js';
 
 const userRouter = express.Router();
 

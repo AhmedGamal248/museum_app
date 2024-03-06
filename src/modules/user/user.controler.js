@@ -88,8 +88,9 @@ const updateAccount = catchError( async (req,res,next) => {
 
                     //user mast be loged in to update account
                     if ( user.status == 'online') {
-                        user.set(req.body)
-                        await user.save()
+                        // user.set(req.body)
+                        // await user.save()
+                        await userModel.findOneAndUpdate({_id:req.params.id},req.body)
                         return res.json({message:'success'})
                         } else {
                             next (new appError('some thing rong you must be loged in',401))
@@ -142,11 +143,13 @@ const changePassword = async (req,res,next)=> {
     const user = await userModel.findById(req.user._id)
 
     // check if password is true or not
+    console.log(req.body.password,user.password)
     if (user && bcrypt.compareSync(req.body.password,user.password)){ 
 
         const token = jwt.sign({userId:user._id,email:user.email,role:user.role},'ay7aga')
+        const hashedPassword = bcrypt.hashSync(req.body.newPassword,10)
         await userModel.findByIdAndUpdate(req.user._id,{
-            password:req.body.newPassword ,
+            password:hashedPassword ,
             passwordChangedAt:Date.now()
         })
 
