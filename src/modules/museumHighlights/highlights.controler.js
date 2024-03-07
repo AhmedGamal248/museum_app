@@ -41,17 +41,23 @@ const getSingleHighlight = catchError( async(req,res) => {
 
 // update Highlight
 const updateHighlight = async (req,res,next) => {
-        const highlight = await highlightModel.findByIdAndUpdate(req.params.id,req.body)
-        res.json({message:'success',highlight})
+  const highlight = await highlightModel.findByIdAndUpdate(req.params.id,req.body)
+  res.json({message:'success',highlight})
 }
 
 
 // delete Highlight
 const deleteHighlight = async (req,res,next) => {
-        await highlightModel.findByIdAndDelete({_id:req.params.id})
-        res.json({message:'success'})
+  await highlightModel.findByIdAndDelete({_id:req.params.id})
+  res.json({message:'success'})
 }
 
+
+// get single Highlights
+const getHighlightWithAi = catchError( async(req,res) => {
+  const highlight = await highlightModel.findOne({title: req.body.title})
+  res.json({message:'success',highlight})
+})
 
 
 
@@ -60,5 +66,6 @@ export {
   getAllHighlights,
   getSingleHighlight,
   updateHighlight,
-  deleteHighlight
+  deleteHighlight,
+  getHighlightWithAi
 }

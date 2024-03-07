@@ -1,6 +1,6 @@
 import express from 'express'
 import { fileUpload } from '../../fileUpload/uploads.js';
-import { addHighlight, deleteHighlight, getAllHighlights, getSingleHighlight, updateHighlight } from './highlights.controler.js';
+import { addHighlight, deleteHighlight, getAllHighlights, getHighlightWithAi, getSingleHighlight, updateHighlight } from './highlights.controler.js';
 import { paramsIdVal } from '../user/user.validation.js';
 import { validation } from '../../middelwar/validation.js';
 
@@ -22,6 +22,9 @@ highlightRouter.put('/highlights/:id',updateHighlight)
 
 // delete artifcat
 highlightRouter.delete('/highlights/:id',deleteHighlight)
+
+
+highlightRouter.get('/highlightsAi',getHighlightWithAi)
 
 export {
     highlightRouter
