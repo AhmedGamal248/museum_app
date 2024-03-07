@@ -14,7 +14,7 @@ const addArtifactVal = joi.object({
         filename: joi.string().required(),
         path: joi.string().required(),
         size: joi.number().max(1000000).required()
-        }).required(),
+        }),
     })
 
 
