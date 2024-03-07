@@ -1,8 +1,8 @@
 import joi from "joi";
 
 const addArtifactVal = joi.object({
-    title: joi.string().min(2).max(100).trim().required(),
-    description: joi.string().min(2).max(500).trim().required(),
+    title: joi.string().min(1).max(1000).trim().required(),
+    description: joi.string().min(1).max(3000).trim().required(),
     createdBy: joi.string().hex().length(24),
 
     imgCover: joi.object({
@@ -13,7 +13,7 @@ const addArtifactVal = joi.object({
         destination:joi.string().required(),
         filename: joi.string().required(),
         path: joi.string().required(),
-        size: joi.number().max(1000000).required()
+        size: joi.number().max(10000000).required()
         }),
     })
 
@@ -24,8 +24,8 @@ const paramsIdVal = joi.object({
 
 
 const updateArtifactVal = joi.object({
-    title: joi.string().min(2).max(100).trim(),
-    description: joi.string().min(2).max(500).trim(),
+    title: joi.string().min(1).max(1000).trim(),
+    description: joi.string().min(1).max(3000).trim(),
     createdBy: joi.string().hex().length(24),
 
     imgCover: joi.array().items(joi.object({

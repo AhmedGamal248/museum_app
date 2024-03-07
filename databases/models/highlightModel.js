@@ -6,14 +6,14 @@ const schema = new mongoose.Schema({
         unique:[true,'the product highlight name used'],
         trim:true,
         require:true,
-        minLength:[2,'too short highlight name']
+        minLength:[1,'too short highlight name']
     },
     description:{
         type:String,
         trim:true,
         require:true,
-        minLength:[10,'too short highlight description'],
-        maxLength:[500,'too long highlight description']
+        minLength:[1,'too short highlight description'],
+        maxLength:[3000,'too long highlight description']
     },
     imgCover:String,
     createdBy:{
