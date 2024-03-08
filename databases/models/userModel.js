@@ -34,7 +34,13 @@ const schema = mongoose.Schema({
         enum:[true,false],
         default:false
     },
-    passwordChangedAt:Date
+    passwordChangedAt:Date,
+
+    otpSecret: {
+        type: String,
+        default: null,
+      },
+
 },{timestamps:true})
 
 

@@ -14,7 +14,7 @@ export const sendEmails = async (email)=> {
         let token = jwt.sign({email},'process.env.JWT_KEY')
             // send mail with defined transport object
             const info = await transporter.sendMail({
-              from: '"blabla"', // sender address
+              from: 'Musuam App Support', // sender address
               to: email, // list of receivers
               subject: "Hello blabal", // Subject line  
               html: emailTemplet(token), // html body

@@ -39,7 +39,7 @@ const verify = catchError(async(req,res,next)=> {
 const signIn = async (req,res,next) => {
 
     const found = await userModel.findOne({email:req.body.email});
-
+    
     if (found &&  bcrypt.compareSync(req.body.password,found.password)) {
 
         await userModel.findOneAndUpdate({email:req.body.email},{status:'online'})
@@ -206,6 +206,32 @@ const allowedTo = (...roles) => {
 }
 
 
+const sendPasswordResetToTheUser = async (req,res,next) => {
+
+    try {
+        const foundUser = await userModel.findOne({email})
+
+        if (!foundUser) return next(new appError('incorrect email !'))
+
+        // if (!foundUser.verfiyEmail) return next(new appError('email must be verfiyed !'))
+
+        const otpDet = {
+            email,
+            subject:'password reset',
+            message: 'Enter the message below to reset your password',
+            duration: 1,
+        };
+        
+    } catch (error) {
+
+    }
+
+
+
+
+
+}
+
 // // forget password and send email to reset
 // const frogetPassword = catchError(async (req,res,next)=>{
 //     const {email} = req.body
@@ -243,7 +269,8 @@ export {
     deleteAccount,
     changePassword,
     protectedRoutes,
-    allowedTo
+    allowedTo,
+    sendPasswordResetToTheUser
     // frogetPassword,
     // resetPassword
 }
