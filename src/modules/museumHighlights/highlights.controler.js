@@ -53,9 +53,9 @@ const deleteHighlight = async (req,res,next) => {
 }
 
 
-// get single Highlights
+// get single Highlight with Ai
 const getHighlightWithAi = catchError( async(req,res) => {
-  const highlight = await highlightModel.findOne({title: req.body.title})
+  const highlight = await highlightModel.findOne({title:{ $regex: req.body.title}})
   res.json({message:'success',highlight})
 })
 
