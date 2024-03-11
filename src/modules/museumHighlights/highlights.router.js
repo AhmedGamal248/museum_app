@@ -3,28 +3,29 @@ import { fileUpload } from '../../fileUpload/uploads.js';
 import { addHighlight, deleteHighlight, getAllHighlights, getHighlightWithAi, getSingleHighlight, updateHighlight } from './highlights.controler.js';
 import { paramsIdVal } from '../user/user.validation.js';
 import { validation } from '../../middelwar/validation.js';
+import { allowedTo, protectedRoutes } from '../user/user.controler.js';
 
 
 const highlightRouter = express.Router();
 
 //addArtifact
-highlightRouter.post('/highlights',fileUpload('imgCover'),addHighlight)
+highlightRouter.post('/highlights',protectedRoutes,allowedTo('user','admin'),fileUpload('imgCover'),addHighlight)
 
 //getAllArtifacts
-highlightRouter.get('/highlights',getAllHighlights)
+highlightRouter.get('/highlights',protectedRoutes,allowedTo('user','admin'),getAllHighlights)
 
 
 // get singel highlight data
-highlightRouter.get('/highlights/:id',validation(paramsIdVal),getSingleHighlight)
+highlightRouter.get('/highlights/:id',protectedRoutes,allowedTo('user','admin'),validation(paramsIdVal),getSingleHighlight)
 
 // update artifcat
-highlightRouter.put('/highlights/:id',updateHighlight)
+highlightRouter.put('/highlights/:id',protectedRoutes,allowedTo('user','admin'),updateHighlight)
 
 // delete artifcat
-highlightRouter.delete('/highlights/:id',deleteHighlight)
+highlightRouter.delete('/highlights/:id',protectedRoutes,allowedTo('user','admin'),deleteHighlight)
 
 
-highlightRouter.get('/highlightsAi',getHighlightWithAi)
+highlightRouter.get('/highlightsAi',protectedRoutes,allowedTo('user','admin'),getHighlightWithAi)
 
 export {
     highlightRouter

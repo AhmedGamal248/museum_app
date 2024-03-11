@@ -113,19 +113,19 @@ userRouter.get('/verify/:token',verify)
 userRouter.post('/signIn',signIn)
 
 // git all users
-userRouter.get('/users',protectedRoutes,allowedTo('user'),getAllUsers)
+userRouter.get('/users',protectedRoutes,allowedTo('user','admin'),getAllUsers)
 
 // get singel user data
-userRouter.get('/users/:id',protectedRoutes,validation(paramsIdVal),getSingleUser)
+userRouter.get('/users/:id',protectedRoutes,allowedTo('user','admin'),validation(paramsIdVal),getSingleUser)
 
 // update account
-userRouter.put('/users/:id',protectedRoutes,validation(updateUserVal),updateAccount)
+userRouter.put('/users/:id',protectedRoutes,allowedTo('user','admin'),validation(updateUserVal),updateAccount)
 
 // delete account
-userRouter.delete('/users/:id',protectedRoutes,validation(paramsIdVal),deleteAccount)
+userRouter.delete('/users/:id',protectedRoutes,allowedTo('user','admin'),validation(paramsIdVal),deleteAccount)
 
 //change password
-userRouter.patch('/changePassword',protectedRoutes,validation(changePasswordVal),changePassword)
+userRouter.patch('/changePassword',protectedRoutes,allowedTo('user','admin'),validation(changePasswordVal),changePassword)
 
 
 

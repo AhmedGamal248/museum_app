@@ -5,7 +5,6 @@ import { catchError } from '../../middelwar/catchError.js';
 import { sendEmails } from '../../emails/sendEmails.js';
 import { appError } from '../../utils/appError.js';
 import { ApiFeatures } from '../../utils/apiFeatures.js';
-// import { sendEmailForReset } from '../../emails/sendEmailForReset.js';
 
 
 //sign up
@@ -206,57 +205,6 @@ const allowedTo = (...roles) => {
 }
 
 
-const sendPasswordResetToTheUser = async (req,res,next) => {
-
-    try {
-        const foundUser = await userModel.findOne({email})
-
-        if (!foundUser) return next(new appError('incorrect email !'))
-
-        // if (!foundUser.verfiyEmail) return next(new appError('email must be verfiyed !'))
-
-        const otpDet = {
-            email,
-            subject:'password reset',
-            message: 'Enter the message below to reset your password',
-            duration: 1,
-        };
-        
-    } catch (error) {
-
-    }
-
-
-
-
-
-}
-
-// // forget password and send email to reset
-// const frogetPassword = catchError(async (req,res,next)=>{
-//     const {email} = req.body
-//     const found = await userModel.findOne({email})
-//     if (found) {
-//         sendEmailForReset(email)
-//         res.json(`please check your email`)
-//     }
-//     else {
-//         next(new appError('email not found',401))
-//     }
-// })
-
-
-// // reset password
-// const resetPassword = catchError(async(req,res,next)=> {
-    
-//     jwt.verify(req.params.token,process.env.JWT_KEY,async(err,decoded)=>{
-//         if (err) return next(new appError(err,401))
-//         // const pass = bcrypt.hashSync(decoded.newPassword,10)
-//         await userModel.findOneAndUpdate({email:decoded.email},{password:req.body.pssword})
-//         res.json({message:'success'})
-//     })
-    
-// })
 
 
 export {
@@ -270,7 +218,4 @@ export {
     changePassword,
     protectedRoutes,
     allowedTo,
-    sendPasswordResetToTheUser
-    // frogetPassword,
-    // resetPassword
 }
