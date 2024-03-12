@@ -12,7 +12,7 @@ const highlightRouter = express.Router();
 highlightRouter.post('/highlights',protectedRoutes,allowedTo('user','admin'),fileUpload('imgCover'),addHighlight)
 
 //getAllArtifacts
-highlightRouter.get('/highlights',protectedRoutes,allowedTo('user','admin'),getAllHighlights)
+highlightRouter.get('/highlights',getAllHighlights)
 
 
 // get singel highlight data
